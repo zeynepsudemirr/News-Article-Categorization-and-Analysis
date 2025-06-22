@@ -1,0 +1,83 @@
+Project Dependency Setup and Data Downloads
+
+This file contains instructions on how to set up the required NLTK data packages
+and the spaCy English language model for the "News Article Categorization and Analysis" project.
+
+---
+
+1. Install Required Python Packages
+
+Before running the project, make sure you have the following Python packages installed:
+
+- nltk
+- scikit-learn
+- spacy
+
+You can install them using pip by running this command in your terminal or command prompt:
+
+    pip install nltk scikit-learn spacy
+
+---
+
+2. Download NLTK Data Packages
+
+The project requires the following NLTK data packages:
+
+- reuters (news dataset)
+- punkt (tokenizer)
+- stopwords (stop words list)
+- wordnet (lemmatizer)
+
+These packages will be downloaded automatically by running the setup code below.
+
+---
+
+3. Download spaCy English Language Model
+
+The project uses the spaCy library and requires the English language model "en_core_web_sm".
+If it is not installed, the setup code will download it automatically.
+
+---
+
+4. How to Run the Project
+
+The project is run via the main.py script. Running this script will perform the following steps in order:
+
+1. Load the Reuters dataset
+2. Preprocess the text data (cleaning, normalization, typo correction, tokenization)
+3. Extract TF-IDF features (using unigrams and bigrams)
+4. Train the selected classification model (default is Naive Bayes)
+5. Evaluate the model and generate performance metrics
+
+---
+
+5. Generated Output Files
+
+After running main.py, the following output files will be created in the project directory:
+
+- raw_sample.txt — Contains a sample of the raw, unprocessed news text.
+- cleaned_normalized_sample.txt — Contains the sample text after preprocessing (cleaning, typo correction, normalization).
+- evaluation_results.txt — Contains the evaluation metrics including accuracy, precision, recall, and F1-score.
+
+---
+
+6. Setup Code to Download Required Packages and Models
+
+Run the following Python code once in your project directory or Python environment
+to download the necessary NLTK data and spaCy model:
+
+```python
+import nltk
+nltk.download('reuters')
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+import spacy
+import subprocess
+import sys
+
+try:
+    spacy.load("en_core_web_sm")
+except OSError:
+    subprocess.check_call([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
